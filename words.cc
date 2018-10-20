@@ -1,8 +1,4 @@
 #include <algorithm>
-#include <chrono>
-#include <thread>
-#include <cstdlib>
-#include <string>
 #include <iostream>
 #include <fstream>
 #include <vector>
@@ -13,7 +9,6 @@
 
     TODO: upload words to a database.
     
-    count how many words there are in tota, how many of each size, how many containing a given substring, etc
 
 */
 
@@ -27,7 +22,6 @@ std::vector<std::string> loadWords(std::string fileName){
 
     std::string readText = "";
 
-    //FF.open(fileName, std::fstream::in);
 
     if(FF.is_open()){
 
@@ -88,31 +82,17 @@ bool isHex(char c){
 
 int main(){
 
-    //std::cout << "How many characters?\n";
-
-    //unsigned int n;
-
-    //std::cin >> n;
-
     std::vector<std::string> v = loadWords("words_alpha.txt");
 
     std::vector<std::string> TopWords;
 
-    //std::cout << "Size of word list: " << sizeof(v) << std::endl;
-
-
-    //std::vector<char> Vchar = {'A','B','C','D','E','F'};
-
     for(std::string s : v){
-
+                
         bool Hex = true;
 
         for(unsigned int i = 0; i<s.size()-1; ++i){
             
-            //std::cout << s[i] << " "<< isHex(s[i]) <<  "\n";
-            
             if(not isHex(s[i]))Hex = false;
-           
             
         } 
 
@@ -122,29 +102,15 @@ int main(){
 
     std::sort(TopWords.begin(), TopWords.end(), [](std::string a, std::string b){return (a.size() >= b.size());}); 
 
-    std::cout << "Longest English word you can write in Hexadecimal:\n" << TopWords[0] << "\n";
+    std::cout << "\n###############################\n\n";
 
+    std::cout << "Total words in the English language: " << v.size() << ".\n\n";
+
+    std::cout << "Total Hexadecimal words in the English language: " << TopWords.size() << ".\n\n";
+
+    std::cout << "Longest English word you can write in Hexadecimal: " << TopWords[0] << "\n\n";
+
+    std::cout << "###############################\n\n";
 
 
 } 
-
-
-/*
-
-
-    for(std::string s : v){
-
-        bool Hex = true;
-
-        for(int i = 0; i<int(s.size());++i){
-            
-
-            if(not isHex(s[i]))Hex = 0;
-           
-            
-        } 
-
-     if(Hex)std::cout << s << "\n";   
-
-    } 
-*/
