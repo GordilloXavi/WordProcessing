@@ -108,9 +108,16 @@ int main(){
 
     std::cout << "Total Hexadecimal words in the English language: " << TopWords.size() << ".\n\n";
 
-    std::cout << "Longest English word you can write in Hexadecimal: " << TopWords[0] << "\n\n";
+    std::cout << "Top 10 longest words you can write in hexadecimal:\n" << "\n";
 
-    std::cout << "###############################\n\n";
+    for(int i =0; i<10; ++i){
+
+        std::cout << TopWords[i] << "\n";
+
+    } 
+
+
+    std::cout << "\n###############################\n\n";
 
 
 } 
